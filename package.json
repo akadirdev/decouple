@@ -14,7 +14,14 @@
     "start": "node ./dist/index.js",
     "prepublish": "tsc"
   },
-  "keywords": [],
+  "keywords": [
+    "DI",
+    "IoC",
+    "Dependency Injection",
+    "Inversion Of Control",
+    "dependency",
+    "inject"
+  ],
   "author": "@akadirdev",
   "license": "ISC",
   "dependencies": {
