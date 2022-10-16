@@ -1,13 +1,12 @@
 import { inject } from "../../../decorators";
-import { UserController } from "../controllers/user.controller";
+import { RoleService } from "./role.service";
 
 export class UserService {
-  constructor(
-    @inject(() => UserController)
-    private userController: UserController
-  ) {}
+  @inject(RoleService)
+  private rolervice: RoleService;
 
   which() {
     console.log("UserService");
+    this.rolervice.which();
   }
 }
