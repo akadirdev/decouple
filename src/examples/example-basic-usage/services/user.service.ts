@@ -1,4 +1,4 @@
-import { inject } from "../../decorators/inject.decorator";
+import { inject } from "../../../decorators";
 import { UserController } from "../controllers/user.controller";
 
 export class UserService {
