@@ -36,12 +36,9 @@ export class Container {
 
   private createDependencyObject(key: string): object {
     const ctor = this.dependencyConstructors.get(key);
-    console.log("ctor:", ctor);
 
     const depens =
       (getMetadata(ctor, "meta:injectables") as Injectable<any>[]) ?? [];
-
-    console.log("depens:", depens);
 
     const args = depens
       .filter((f) => f.injectAt === InjectAt.CONSTRUCTOR)

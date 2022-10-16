@@ -6,8 +6,6 @@ export const inject = <T>(ctor: Constructor<T> | Function) => {
     const injectables: Injectable<any>[] =
       getMetadata(target, "meta:injectables") ?? [];
 
-    console.log("inject.ctor: ", ctor);
-
     injectables.push({
       ctor: ctor,
       property: propertyKey,
