@@ -8,7 +8,7 @@ const main = async () => {
   container.injectable(UserController);
   container.injectable(UserService);
 
-  const obj = container.get(UserService);
+  const obj = container.get(UserController);
   obj.which();
 };
 
