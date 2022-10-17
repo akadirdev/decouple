@@ -1,5 +1,3 @@
-# decouplejs
-
 <p align="center">
   <img src="./logo-decouplejs.png">
 </p>
@@ -81,7 +79,7 @@ export class UserController {
     @inject(UserService)
     private userService: UserService
   ) {}
-  ...
+  // ...
 }
 ```
 
@@ -95,16 +93,49 @@ export class UserController {
   private userService: UserService;
 
   constructor() {}
-  ...
+  // ...
 }
 ```
 
----
+## Binding Scopes
 
-### Next Features
+Specifies how long the created objects will live and how many times they should be created during the application lifecycle. Scopes can be defined by two way:
 
-- Scope based instance creatation.
+1. via `.scope()` function while class is introducing with`.injectable()`
+
+```
+container.injectable(UserController).scope(BindingScope.SINGLETON);
+```
+
+2. via `@injectable` decorator which is above class definition
+
+```
+@injectable(BindingScope.SINGLETON)
+export class UserController {
+  // ...
+}
+```
+
+One of scope definition methods is enough for a injectable class.
+
+> If two methods are used at the same time, the scope of method 1 will be valid.
+
+> If no scope is specified, the TRANSIENT scope will be valid.
+
+Decouple.js supports two types of scope for now:
+
+> ### SINGLETON
+>
+> - Only one instance will be created during the application lifecycle and this same instance will be used by all dependent classes too.
+
+> ### TRANSIENT
+>
+> - A new instance will be created for each need of the class instance.
+
+## Next Features
+
 - [express.js](https://expressjs.com/ "express.js") middleware support.
+- BindingScope.REQUEST support
 
 ---
 
