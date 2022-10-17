@@ -6,9 +6,18 @@ A dependency injection library based on `IoC` Container. `Dependency Injection` 
 
 `npm i @decouple/core`
 
+And add below `compilerOptions` to `tsconfig.json`
+
+```
+"experimentalDecorators": true,
+"emitDecoratorMetadata": true
+```
+
 ## Usage
 
 Lets think about you have two classes which are `UserController` and `UserService`.
+
+`UserController` have a dependency to `UserService` which is declared with `@inject` decorator.
 
 ```
 export class UserController {
@@ -34,8 +43,6 @@ export class UserService {
 }
 ```
 
-`UserController` have a dependency to `UserService` which is declared with `@inject` decorator.
-
 Then, create a `Container` object and introduce your classes to IoC Container with its `.injectable()` function.
 
 ```
@@ -54,3 +61,33 @@ controller.print();
 // UserController
 // UserService
 ```
+
+## @inject decorator
+
+```
+export class UserController {
+  constructor(
+    @inject(UserService)
+    private userService: UserService
+  ) {}
+  ...
+}
+```
+
+With `@inject` decorator, decouple.js understand which dependent classes instances will be initialize and assign during create a new base class instance.
+
+You can also use `@inject' decorator as property decorator like constructor parameter decorator as below.
+
+```
+export class UserController {
+  @inject(UserService)
+  private userService: UserService;
+
+  constructor() {}
+  ...
+}
+```
+
+---
+
+Please feel free to open new issues on project github repo.
