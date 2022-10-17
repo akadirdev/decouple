@@ -1,4 +1,4 @@
-# decouple
+# decouplejs
 
 A dependency injection library based on `IoC` Container. `Dependency Injection` implementation for Node.js projects written with `Typescript`. Build a container and permit it for all dependencies. Get all injectable objects easily without use `new` keyword. It's light-weight library and easy-to-use.
 
@@ -87,6 +87,13 @@ export class UserController {
   ...
 }
 ```
+
+---
+
+### Next Features
+
+- Scope based instance creatation.
+- [express.js](https://expressjs.com/ "express.js") middleware support.
 
 ---
 
