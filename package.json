@@ -23,7 +23,7 @@
     "inject"
   ],
   "author": "@akadirdev",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "reflect-metadata": "^0.1.13"
   },
