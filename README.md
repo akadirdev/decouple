@@ -5,7 +5,7 @@
 </p>
 <p align="center">
   <img src="https://img.shields.io/bower/l/decouple">
-  <img src="https://img.shields.io/badge/version-v1.0.9-success">
+  <img src="https://img.shields.io/github/v/release/akadirdev/decouple">
   <img src="https://img.shields.io/bundlephobia/min/@decouplejs/core">
   <img src="https://img.shields.io/npm/dw/@decouplejs/core">
   <img src="https://img.shields.io/github/last-commit/akadirdev/decouple">
