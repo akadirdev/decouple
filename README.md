@@ -15,7 +15,7 @@ A dependency injection library based on `IoC` Container. `Dependency Injection` 
 
 ## Installation
 
-`npm i @decouple/core`
+`npm i @decouplejs/core`
 
 And add below `compilerOptions` to `tsconfig.json`
 
