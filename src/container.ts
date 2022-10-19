@@ -1,6 +1,7 @@
 import { logger } from "./logger";
 import { getMetadata } from "./metadata";
 import {
+  BindingKey,
   BindingScope,
   Constructor,
   DependencyConstructor,
@@ -10,34 +11,42 @@ import {
 } from "./types";
 
 export class Container {
-  private dependencies: { [key: string]: any };
-  private caches: { [key: string]: any };
-  private dependencyConstructors: Map<string, DependencyConstructor<any>>;
+  private dependencies: { [key: PropertyKey]: any };
+  private caches: { [key: PropertyKey]: any };
+  private dependencyConstructors: Map<PropertyKey, DependencyConstructor<any>>;
 
   constructor() {
     this.dependencies = {};
     this.caches = {};
-    this.dependencyConstructors = new Map<string, DependencyConstructor<any>>();
+    this.dependencyConstructors = new Map<
+      PropertyKey,
+      DependencyConstructor<any>
+    >();
   }
 
-  public injectable<T>(ctor: Constructor<T>): DependencyConstructor<T> {
-    const key = ctor.name;
-    logger.debug("injectable.key:" + key);
+  public injectable<T>(
+    bindingKey: BindingKey,
+    ctor: Constructor<T>
+  ): DependencyConstructor<T> {
+    const key: symbol = bindingKey._key;
+    logger.debug("injectable.bindingKey:" + key.toString());
 
     Object.defineProperty(this.dependencies, key, {
       get: () => {
-        logger.debug("defineProperty.get:" + key);
+        logger.debug("defineProperty.get:" + key.toString());
         const dc = this.dependencyConstructors.get(key);
         if (!dc)
-          throw new Error(`${key} was not introduce as a injectable class!`);
+          throw new Error(
+            `${key.toString()} was not introduce as a injectable class!`
+          );
         if (dc.bindingScope === BindingScope.SINGLETON) {
           if (!this.caches.hasOwnProperty(key)) {
             this.caches[key] = this.createDependencyObject(key);
           }
-          logger.debug(`${key} get as singleton`);
+          logger.debug(`${key.toString()} get as singleton`);
           return this.caches[key];
         } else if (dc.bindingScope === BindingScope.TRANSIENT) {
-          logger.debug(`${key} get as transient and create new one`);
+          logger.debug(`${key.toString()} get as transient and create new one`);
           return this.createDependencyObject(key);
         } else {
           throw new Error(
@@ -50,14 +59,16 @@ export class Container {
     });
 
     const bindingScope = this.getBindingScopeFromMetadata(ctor);
-    logger.debug("injectable.bindingScope:" + key + ":" + bindingScope);
-    const dc = new DependencyConstructor(ctor, bindingScope);
+    logger.debug(
+      "injectable.bindingScope:" + key.toString() + ":" + bindingScope
+    );
+    const dc = new DependencyConstructor(ctor, bindingKey, bindingScope);
     this.dependencyConstructors.set(key, dc);
     return dc;
   }
 
-  public get<T>(ctor: Constructor<T>): T {
-    return this.dependencies[ctor.name];
+  public get<T>(bindingKey: BindingKey): T {
+    return this.dependencies[bindingKey._key];
   }
 
   private getBindingScopeFromMetadata<T>(
@@ -71,11 +82,11 @@ export class Container {
     return metaOption?.bindingScope;
   }
 
-  private createDependencyObject(key: string): object {
+  private createDependencyObject(key: PropertyKey): object {
     const ctor = this.dependencyConstructors.get(key).ctor;
     logger.debug("createDependencyObject.ctor:" + ctor.name);
     const depens =
-      (getMetadata(ctor, "meta:injectables") as Injectable<any>[]) ?? [];
+      (getMetadata(ctor, "meta:injectables") as Injectable[]) ?? [];
 
     logger.debug("createDependencyObject.depens:" + JSON.stringify(depens));
 
@@ -83,7 +94,7 @@ export class Container {
       .filter((f) => f.injectAt === InjectAt.CONSTRUCTOR)
       .map((m) => {
         logger.debug("InjectAt.CONSTRUCTOR:" + JSON.stringify(m));
-        return this.dependencies[m.ctor.name];
+        return this.dependencies[m.bindingKey._key];
       });
 
     const obj = new ctor(...args);
@@ -92,7 +103,7 @@ export class Container {
       .filter((f) => f.injectAt === InjectAt.PROPERTY)
       .map((m) => {
         logger.debug("InjectAt.PROPERTY:" + JSON.stringify(m));
-        obj[m.property] = this.dependencies[m.ctor.name];
+        obj[m.property] = this.dependencies[m.bindingKey._key];
       });
 
     return obj;
