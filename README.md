@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./logo-decouplejs.png">
+  <img src="./public/logo-decouplejs.png">
 </p>
 <p align="center">
   <img src="https://img.shields.io/bower/l/decouple">
@@ -15,11 +15,10 @@ A dependency injection library based on `IoC` Container. `Dependency Injection` 
 
 `npm i @decouplejs/core`
 
-And add below `compilerOptions` to `tsconfig.json`
+And add below to `compilerOptions` in `tsconfig.json`
 
 ```
-"experimentalDecorators": true,
-"emitDecoratorMetadata": true
+"experimentalDecorators": true
 ```
 
 ## Usage
@@ -137,6 +136,8 @@ Decouple.js supports two types of scope for now:
 - [express.js](https://expressjs.com/ "express.js") middleware support.
 - BindingScope.REQUEST support
 
----
+## License
 
-Please feel free to open new issues on project github repo.
+Copyright © 2022 Abdulkadir Dede.
+
+This project is licensed under the MIT License - see the [LICENSE file](https://github.com/akadirdev/decouple/blob/develop/LICENSE.md "LICENSE") for details.

@@ -2,3 +2,11 @@ src/
 node_modules/
 .env
 .vscode
+__tests__/
+.eslintrc
+.eslintignore
+.gitignore
+.npmignore
+public/
+tsconfig.json
+package-lock.json

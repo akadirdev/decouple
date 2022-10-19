@@ -1,4 +1,4 @@
-import { BindingKey } from "../../types";
+import { BindingKey } from "../../binding";
 
 export const USER_CONTROLLER = BindingKey.create("user.controller");
 export const USER_SERVICE = BindingKey.create("user.service");

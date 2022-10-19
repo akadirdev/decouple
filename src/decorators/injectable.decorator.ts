@@ -1,5 +1,9 @@
+import { BindingScope } from "../binding";
 import { setMetadata } from "../metadata";
-import { BindingScope, InjectableOptions } from "../types";
+
+export interface InjectableOptions {
+  bindingScope: BindingScope;
+}
 
 export const injectable = (
   injectableOptions?: InjectableOptions | BindingScope

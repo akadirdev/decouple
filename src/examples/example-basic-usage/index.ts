@@ -1,5 +1,5 @@
+import { BindingScope } from "../../binding";
 import { Container } from "../../container";
-import { BindingScope } from "../../types";
 import { UserController } from "./controllers/user.controller";
 import { ROLE_SERVICE, USER_CONTROLLER, USER_SERVICE } from "./keys";
 import { RoleService } from "./services/role.service";
