@@ -1,6 +1,6 @@
 {
   "name": "@decouplejs/core",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Dependency Injection Tool",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -22,7 +22,7 @@
     "dependency",
     "inject"
   ],
-  "author": "@akadirdev",
+  "author": "akadirdev",
   "license": "MIT",
   "dependencies": {
     "reflect-metadata": "^0.1.13"
@@ -31,7 +31,6 @@
     "@types/node": "^18.8.3",
     "@typescript-eslint/eslint-plugin": "^5.39.0",
     "@typescript-eslint/parser": "^5.39.0",
-    "dotenv": "^16.0.3",
     "eslint": "^8.25.0",
     "typescript": "^4.8.4"
   },

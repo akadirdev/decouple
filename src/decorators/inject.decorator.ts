@@ -1,6 +1,7 @@
+import { BindingKey } from "../binding";
 import { logger } from "../logger";
 import { getMetadata, setMetadata } from "../metadata";
-import { BindingKey, Injectable, InjectAt } from "../types";
+import { Injectable, InjectAt } from "../types";
 
 export const inject = (bindingKey: BindingKey) => {
   return (target: Object, propertyKey: string, parameterIndex?: number) => {

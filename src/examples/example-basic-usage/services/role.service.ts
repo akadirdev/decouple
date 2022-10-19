@@ -1,6 +1,6 @@
 import { between } from "..";
+import { BindingScope } from "../../../binding";
 import { injectable } from "../../../decorators";
-import { BindingScope } from "../../../types";
 
 @injectable(BindingScope.SINGLETON)
 export class RoleService {

@@ -1,14 +1,9 @@
+import { BindingKey, BindingScope } from "./binding";
+import { InjectableOptions } from "./decorators";
+import { DependencyConstructor } from "./dependency";
 import { logger } from "./logger";
 import { getMetadata } from "./metadata";
-import {
-  BindingKey,
-  BindingScope,
-  Constructor,
-  DependencyConstructor,
-  Injectable,
-  InjectableOptions,
-  InjectAt,
-} from "./types";
+import { Constructor, Injectable, InjectAt } from "./types";
 
 export class Container {
   private dependencies: { [key: PropertyKey]: any };

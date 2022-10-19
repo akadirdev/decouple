@@ -1,5 +1,5 @@
+import { BindingScope } from "../../../binding";
 import { inject, injectable } from "../../../decorators";
-import { BindingScope } from "../../../types";
 import { USER_SERVICE } from "../keys";
 import { UserService } from "../services/user.service";
 
