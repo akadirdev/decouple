@@ -7,6 +7,7 @@
   <img src="https://img.shields.io/bundlephobia/min/@decouplejs/core">
   <img src="https://img.shields.io/npm/dw/@decouplejs/core">
   <img src="https://img.shields.io/github/last-commit/akadirdev/decouple">
+  <img src="https://dl.circleci.com/status-badge/img/gh/akadirdev/decouple/tree/circleci-project-setup.svg?style=shield">
 </p>
 
 A dependency injection library based on `IoC` Container. `Dependency Injection` implementation for Node.js projects written with `Typescript`. Build a container and permit it for all dependencies. Get all injectable objects easily without use `new` keyword. It's light-weight library and easy-to-use.
