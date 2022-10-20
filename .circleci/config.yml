@@ -20,4 +20,4 @@ workflows:
                 - release
           post-steps:
             - codecov/upload:
-                file: "./coverage/test-results.xml"
+                file: "coverage"
