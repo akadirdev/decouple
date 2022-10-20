@@ -1,5 +1,4 @@
 import { expect } from "chai";
-import { BindingKey } from "../binding";
 import { Container } from "../container";
 
 describe("Container", () => {
@@ -9,10 +8,10 @@ describe("Container", () => {
     container = new Container();
   });
 
-  describe("get", () => {
-    it("should get object successfully", function () {
-      const res = container.get(BindingKey.create("asd"));
-      expect(res).to.be.undefined;
+  describe("test-func", () => {
+    it("should sum two value: 2 + 3 = 5", () => {
+      const res = container.test(2, 3);
+      expect(res).to.be.equal(5);
     });
   });
 });

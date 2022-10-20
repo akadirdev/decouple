@@ -68,6 +68,10 @@ export class Container {
     return this.dependencies[bindingKey._key];
   }
 
+  public test(n1: number, n2: number): number {
+    return n1 + n2;
+  }
+
   private getBindingScopeFromMetadata<T>(
     ctor: Constructor<T>
   ): BindingScope | undefined {
