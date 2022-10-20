@@ -7,7 +7,7 @@
   "scripts": {
     "pretest": "npm run build",
     "test": "mocha",
-    "coverage": "mocha --reporter mocha-junit-reporter --reporter-options mochaFile=./coverage/test-results.xml",
+    "coverage": "mocha --reporter mocha-junit-reporter",
     "test:ci": "npm run pretest && npm run coverage",
     "lint": "eslint . --ext .ts",
     "clean": "rm -rf ./dist",
