@@ -16,7 +16,6 @@
     "start": "node ./dist/index.js",
     "prepublish": "npm run build"
   },
-  "coverage": "nyc report --reporter=text-lcov | coveralls",
   "keywords": [
     "DI",
     "IoC",
