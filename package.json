@@ -6,7 +6,9 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "pretest": "npm run build",
-    "test": "mocha --reporter mocha-junit-reporter --reporter-options mochaFile=./coverage/test-results.xml",
+    "test": "mocha",
+    "coverage": "mocha --reporter mocha-junit-reporter --reporter-options mochaFile=./coverage/test-results.xml",
+    "test:ci": "npm run pretest && npm run coverage",
     "lint": "eslint . --ext .ts",
     "clean": "rm -rf ./dist",
     "prebuild": "npm run clean && npm run lint",

@@ -12,9 +12,12 @@ workflows:
   upload-to-codecov:
     jobs:
       - node/test:
+          run-command:
+            - test:ci
           filters:
             branches:
               only:
+                - circleci-project-setup
                 - release
           post-steps:
             - codecov/upload:
