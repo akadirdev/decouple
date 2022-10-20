@@ -13,3 +13,4 @@ package-lock.json
 .mocharc.json
 coverage
 .circleci
+.nyc_output

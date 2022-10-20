@@ -3,21 +3,20 @@
 version: 2.1
 
 orbs:
-  codecov: codecov/codecov@3.2.4
+  coveralls: coveralls/coveralls@1.0.6
   node: circleci/node@5.0.3
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
-  upload-to-codecov:
+  build:
     jobs:
       - node/test:
-          run-command: "test:ci"
+          run-command: "coverage"
           filters:
             branches:
               only:
                 - circleci-project-setup
                 - release
           post-steps:
-            - codecov/upload:
-                file: "test-results.xml"
+            - coveralls/upload
