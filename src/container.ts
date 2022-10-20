@@ -30,10 +30,7 @@ export class Container {
       get: () => {
         logger.debug("defineProperty.get:" + key.toString());
         const dc = this.dependencyConstructors.get(key);
-        if (!dc)
-          throw new Error(
-            `${key.toString()} was not introduce as a injectable class!`
-          );
+
         if (dc.bindingScope === BindingScope.SINGLETON) {
           if (!this.caches.hasOwnProperty(key)) {
             this.caches[key] = this.createDependencyObject(key);
