@@ -11,3 +11,5 @@ public/
 tsconfig.json
 package-lock.json
 .mocharc.json
+coverage
+.circleci

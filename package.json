@@ -6,7 +6,7 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "pretest": "npm run build",
-    "test": "mocha",
+    "test": "mocha --reporter mocha-junit-reporter --reporter-options mochaFile=./coverage/test-results.xml",
     "lint": "eslint . --ext .ts",
     "clean": "rm -rf ./dist",
     "prebuild": "npm run clean && npm run lint",
@@ -37,6 +37,7 @@
     "chai": "^4.3.6",
     "eslint": "^8.25.0",
     "mocha": "^10.1.0",
+    "mocha-junit-reporter": "^2.1.0",
     "typescript": "^4.8.4"
   },
   "repository": {
