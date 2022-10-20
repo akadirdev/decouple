@@ -63,13 +63,7 @@ export class Container {
   }
 
   public get<T>(bindingKey: BindingKey): T {
-    console.log("get", bindingKey);
-
     return this.dependencies[bindingKey._key];
-  }
-
-  public test(n1: number, n2: number): number {
-    return n1 + n2;
   }
 
   private getBindingScopeFromMetadata<T>(
@@ -79,7 +73,6 @@ export class Container {
       ctor,
       "meta:injectableOptions"
     ) as InjectableOptions;
-    console.log("metaOption", metaOption);
 
     return metaOption?.bindingScope;
   }
