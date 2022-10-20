@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Mocha Tests" time="0.002" tests="1" failures="0">
+  <testsuite name="Root Suite" timestamp="2022-10-20T09:48:19" tests="0" time="0.000" failures="0">
+  </testsuite>
+  <testsuite name="Container" timestamp="2022-10-20T09:48:19" tests="0" file="/home/alphadev/workspace/own/decouple/dist/__tests__/container.spec.js" time="0.000" failures="0">
+  </testsuite>
+  <testsuite name="get" timestamp="2022-10-20T09:48:19" tests="1" file="/home/alphadev/workspace/own/decouple/dist/__tests__/container.spec.js" time="0.001" failures="0">
+    <testcase name="Container get should get object successfully" time="0.000" classname="should get object successfully">
+    </testcase>
+  </testsuite>
+</testsuites>
