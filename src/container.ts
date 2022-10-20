@@ -1,6 +1,6 @@
 import { BindingKey, BindingScope } from "./binding";
 import { InjectableOptions } from "./decorators";
-import { DependencyConstructor } from "./dependency";
+import { DependencyConstructor } from "./dependency/dependency-constructor";
 import { logger } from "./logger";
 import { getMetadata } from "./metadata";
 import { Constructor, Injectable, InjectAt } from "./types";
