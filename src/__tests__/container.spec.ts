@@ -53,7 +53,7 @@ describe("Container", () => {
       });
     });
 
-    describe("when used unknown binding key", () => {
+    describe("when used unknown binding scope", () => {
       it("should throw error", () => {
         expect(() => {
           container.get(UNKNOWN_SERVICE);
