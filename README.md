@@ -32,7 +32,7 @@ Lets think about you have two classes which are `UserController` and `UserServic
 ```
 export class UserController {
   constructor(
-    @inject(UserService)
+    @inject(USER_SERVICE)
     private userService: UserService
   ) {}
 
@@ -53,18 +53,27 @@ export class UserService {
 }
 ```
 
-Then, create a `Container` object and introduce your classes to IoC Container with its `.injectable()` function.
+When we used `@inject` decorator, `USER_SERVICE` binding key was declared. Lets define this binding keys.
+
+Create a `keys.ts` file and define binding keys to be associated with above classes like below:
+
+```
+export const USER_CONTROLLER = BindingKey.create("user.controller");
+export const USER_SERVICE = BindingKey.create("user.service");
+```
+
+Now, create a `Container` and introduce your classes to IoC Container via its `.injectable()` function with binding keys that are defined before.
 
 ```
 const container = new Container();
-container.injectable(UserController);
-container.injectable(UserService);
+container.injectable(USER_CONTROLLER, UserController);
+container.injectable(USER_SERVICE, UserService);
 ```
 
-Finally, if you want to create and use a `UserController` object, use `.get()` function of Container.
+Finally, if you want to create and use a `UserController` instance, call `.get()` of Container with `USER_CONTROLLER` key.
 
 ```
-const controller = container.get(UserController);
+const controller = container.get(USER_CONTROLLER);
 controller.print();
 
 // output
@@ -77,7 +86,7 @@ controller.print();
 ```
 export class UserController {
   constructor(
-    @inject(UserService)
+    @inject(USER_SERVICE)
     private userService: UserService
   ) {}
   // ...
@@ -90,7 +99,7 @@ You can also use `@inject' decorator as property decorator like constructor para
 
 ```
 export class UserController {
-  @inject(UserService)
+  @inject(USER_SERVICE)
   private userService: UserService;
 
   constructor() {}
@@ -105,7 +114,7 @@ Specifies how long the created objects will live and how many times they should 
 1. via `.scope()` function while class is introducing with`.injectable()`
 
 ```
-container.injectable(UserController).scope(BindingScope.SINGLETON);
+container.injectable(USER_CONTROLLER, UserController).scope(BindingScope.SINGLETON);
 ```
 
 2. via `@injectable` decorator which is above class definition
@@ -127,19 +136,23 @@ Decouple.js supports two types of scope for now:
 
 > ### SINGLETON
 >
-> - Only one instance will be created during the application lifecycle and this same instance will be used by all dependent classes too.
+> > Only one instance will be created during the application lifecycle and this same instance will be used by all dependent classes too.
 
 > ### TRANSIENT
 >
-> - A new instance will be created for each need of the class instance.
+> > A new instance will be created for each need of the class instance.
+
+## Example Implementation
+
+- [Decouple.js Implementation Example With Express.js](https://github.com/akadirdev/decouple-express-example)
 
 ## Next Features
 
-- [express.js](https://expressjs.com/ "express.js") middleware support.
-- BindingScope.REQUEST support
+1. [express.js](https://expressjs.com/ "express.js") middleware support.
+2. BindingScope.REQUEST support
 
 ## License
 
 Copyright © 2022 Abdulkadir Dede.
 
-This project is licensed under the MIT License - see the [LICENSE file](https://github.com/akadirdev/decouple/blob/develop/LICENSE.md "LICENSE") for details.
+This project is licensed under the MIT License - see the [LICENSE file](https://github.com/akadirdev/decouple/blob/release/LICENSE.md "LICENSE") for details.
