@@ -29,7 +29,7 @@ Lets think about you have two classes which are `UserController` and `UserServic
 
 `UserController` have a dependency to `UserService` which is declared with `@inject` decorator.
 
-```
+```TypeScript
 export class UserController {
   constructor(
     @inject(USER_SERVICE)
@@ -43,7 +43,7 @@ export class UserController {
 }
 ```
 
-```
+```TypeScript
 export class UserService {
   constructor() {}
 
@@ -57,14 +57,14 @@ When we used `@inject` decorator, `USER_SERVICE` binding key was declared. Lets 
 
 Create a `keys.ts` file and define binding keys to be associated with above classes like below:
 
-```
+```TypeScript
 export const USER_CONTROLLER = BindingKey.create("user.controller");
 export const USER_SERVICE = BindingKey.create("user.service");
 ```
 
 Now, create a `Container` and introduce your classes to IoC Container via its `.injectable()` function with binding keys that are defined before.
 
-```
+```TypeScript
 const container = new Container();
 container.injectable(USER_CONTROLLER, UserController);
 container.injectable(USER_SERVICE, UserService);
@@ -72,7 +72,7 @@ container.injectable(USER_SERVICE, UserService);
 
 Finally, if you want to create and use a `UserController` instance, call `.get()` of Container with `USER_CONTROLLER` key.
 
-```
+```TypeScript
 const controller = container.get(USER_CONTROLLER);
 controller.print();
 
@@ -83,7 +83,7 @@ controller.print();
 
 ## @inject decorator
 
-```
+```TypeScript
 export class UserController {
   constructor(
     @inject(USER_SERVICE)
@@ -97,7 +97,7 @@ With `@inject` decorator, decouple.js understand which dependent classes instanc
 
 You can also use `@inject' decorator as property decorator like constructor parameter decorator as below.
 
-```
+```TypeScript
 export class UserController {
   @inject(USER_SERVICE)
   private userService: UserService;
@@ -113,13 +113,13 @@ Specifies how long the created objects will live and how many times they should 
 
 1. via `.scope()` function while class is introducing with`.injectable()`
 
-```
+```TypeScript
 container.injectable(USER_CONTROLLER, UserController).scope(BindingScope.SINGLETON);
 ```
 
 2. via `@injectable` decorator which is above class definition
 
-```
+```TypeScript
 @injectable(BindingScope.SINGLETON)
 export class UserController {
   // ...
