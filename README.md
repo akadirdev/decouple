@@ -15,6 +15,8 @@ A dependency injection library based on `IoC` Container. `Dependency Injection` 
 
 ## Installation
 
+[![Join the chat at https://gitter.im/decouplejs/development](https://badges.gitter.im/decouplejs/development.svg)](https://gitter.im/decouplejs/development?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 `npm i @decouplejs/core`
 
 And add below to `compilerOptions` in `tsconfig.json`
