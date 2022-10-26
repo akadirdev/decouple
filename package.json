@@ -22,7 +22,9 @@
     "Dependency Injection",
     "Inversion Of Control",
     "dependency",
-    "inject"
+    "inject",
+    "container",
+    "decouple"
   ],
   "author": "akadirdev",
   "license": "MIT",
