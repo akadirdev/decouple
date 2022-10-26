@@ -1,6 +1,6 @@
 {
   "name": "@decouplejs/core",
-  "version": "2.3.2",
+  "version": "2.3.3",
   "description": "Dependency Injection Tool",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -22,7 +22,9 @@
     "Dependency Injection",
     "Inversion Of Control",
     "dependency",
-    "inject"
+    "inject",
+    "container",
+    "decouple"
   ],
   "author": "akadirdev",
   "license": "MIT",

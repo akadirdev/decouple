@@ -7,6 +7,9 @@
   <img src="https://img.shields.io/bundlephobia/min/@decouplejs/core">
   <img src="https://img.shields.io/npm/dw/@decouplejs/core">
   <img src="https://img.shields.io/github/last-commit/akadirdev/decouple">
+  <a href="https://gitter.im/decouplejs/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge">
+    <img src="https://badges.gitter.im/decouplejs/community.svg" >
+  </a>
   <img src="https://dl.circleci.com/status-badge/img/gh/akadirdev/decouple/tree/release.svg?style=shield">
   <img src="https://coveralls.io/repos/github/akadirdev/decouple/badge.svg?branch=release">
 </p>
